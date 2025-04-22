@@ -105,10 +105,9 @@ export const useLayoutStyles = <T>({
       return {
         width: "fit-content",
       }
-    } else {
-      return {
-        width: "auto",
-      }
+    }
+    return {
+      width: "auto",
     }
   }, [element])
 
