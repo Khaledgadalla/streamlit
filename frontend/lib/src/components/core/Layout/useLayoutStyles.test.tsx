@@ -75,7 +75,7 @@ describe("#useLayoutStyles", () => {
       it.each([
         [streamlit.Width.STRETCH, false, { width: "100%" }],
         [streamlit.Width.STRETCH, true, { width: "100%" }],
-        [streamlit.Width.CONTENT, false, { width: "auto" }],
+        [streamlit.Width.CONTENT, false, { width: "fit-content" }],
         [streamlit.Width.CONTENT, true, { width: "100%" }],
         [streamlit.Width.PIXEL, false, { width: "auto" }],
         [streamlit.Width.PIXEL, true, { width: "100%" }],
@@ -141,7 +141,7 @@ describe("#useLayoutStyles", () => {
             pixelWidth: 200,
             useContainerWidth: false,
           },
-          { width: "auto" },
+          { width: "fit-content" },
         ],
         [
           {

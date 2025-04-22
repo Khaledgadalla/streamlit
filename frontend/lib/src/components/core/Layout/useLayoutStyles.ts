@@ -34,14 +34,14 @@ const isNonZeroPositiveNumber = (value: unknown): value is number =>
 
 type LayoutWidth = {
   pixels?: number | undefined
-  layoutWidthType: streamlit.Width
+  layoutWidthType: streamlit.Width | undefined
 }
 
 const getWidth = (element: LayoutElement): LayoutWidth => {
   // This can be simplified once all elements have been updated to use the
   // new `pixelWidth` and `widthType` fields.
   let pixels: number | undefined
-  let type: streamlit.Width = streamlit.Width.CONTENT
+  let type: streamlit.Width | undefined
 
   if (element.widthType === streamlit.Width.STRETCH) {
     type = streamlit.Width.STRETCH
@@ -101,9 +101,14 @@ export const useLayoutStyles = <T>({
       return {
         width: commandWidth,
       }
-    }
-    return {
-      width: "auto",
+    } else if (layoutWidthType === streamlit.Width.CONTENT) {
+      return {
+        width: "fit-content",
+      }
+    } else {
+      return {
+        width: "auto",
+      }
     }
   }, [element])
 
