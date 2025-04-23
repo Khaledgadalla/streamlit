@@ -23,3 +23,13 @@ st.text("Lorem      ipsum\tdolor\t\tsit amet")
 st.text(
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 )
+
+# Test different width options. Above all have "content" width since that is the default.
+st.text(
+    "This is a text with stretch width.",
+    width="stretch",
+)
+st.text(
+    "This is a text with fixed width of 300 pixels. The container will be exactly 300 pixels wide, regardless of the content or parent container. The text will wrap within this fixed width. This is useful when you want precise control over the text container's width, regardless of the content or surrounding elements.",
+    width=300,
+)
