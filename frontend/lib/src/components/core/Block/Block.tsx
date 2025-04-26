@@ -19,7 +19,7 @@ import React, { ReactElement, ReactNode, useContext } from "react"
 import classNames from "classnames"
 import { useTheme } from "@emotion/react"
 
-import { Block as BlockProto } from "@streamlit/protobuf"
+import { Block as BlockProto, streamlit } from "@streamlit/protobuf"
 
 import { LibContext } from "~lib/components/core/LibContext"
 import { AppNode, BlockNode, ElementNode } from "~lib/AppNode"
@@ -168,7 +168,7 @@ const BlockNodeRenderer = (props: BlockPropsWithoutWidth): ReactElement => {
     return (
       <StyledColumn
         weight={node.deltaBlock.column.weight ?? 0}
-        gap={node.deltaBlock.column.gap ?? ""}
+        gap={node.deltaBlock.column.gapSize ?? undefined}
         verticalAlignment={
           node.deltaBlock.column.verticalAlignment ?? undefined
         }
@@ -270,7 +270,7 @@ export const ContainerContentsWrapper = (
   const defaultStyles: StyledFlexContainerBlockProps = {
     direction: Direction.VERTICAL,
     flex: 1,
-    gap: BlockProto.FlexContainer.Gap.SMALL,
+    gap: streamlit.GapSize.SMALL,
   }
 
   const userKey = getKeyFromId(props.node.deltaBlock.id)
@@ -301,8 +301,7 @@ const FlexBoxContainer = (props: FlexBoxContainerProps): ReactElement => {
   const styles = {
     flex: 1,
     gap:
-      props.node.deltaBlock.flexContainer?.gap ??
-      BlockProto.FlexContainer.Gap.SMALL,
+      props.node.deltaBlock.flexContainer?.gapSize ?? streamlit.GapSize.SMALL,
     direction: direction,
   }
 
@@ -346,10 +345,10 @@ const FlexBoxContainer = (props: FlexBoxContainerProps): ReactElement => {
       <StyledFlexContainerBlock
         {...styles}
         className={classNames(
-          getClassnamePrefix(Direction.VERTICAL),
+          getClassnamePrefix(direction),
           convertKeyToClassName(userKey)
         )}
-        data-testid={getClassnamePrefix(Direction.VERTICAL)}
+        data-testid={getClassnamePrefix(direction)}
       >
         <ChildRenderer {...props} />
       </StyledFlexContainerBlock>
