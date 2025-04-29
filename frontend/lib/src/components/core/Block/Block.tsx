@@ -222,6 +222,9 @@ export const FlexBoxContainer = (
     <BlockBorderWrapper
       {...blockBorderWrapperProps}
       data-testid="stVerticalBlockBorderWrapper"
+      data-test-scroll-behavior={
+        activateScrollToBottom ? "scroll-to-bottom" : "normal"
+      }
     >
       <StyledFlexContainerBlock
         {...styles}
@@ -230,9 +233,6 @@ export const FlexBoxContainer = (
           convertKeyToClassName(userKey)
         )}
         data-testid={getClassnamePrefix(direction)}
-        data-test-scroll-behavior={
-          activateScrollToBottom ? "scroll-to-bottom" : "normal"
-        }
       >
         <ChildRenderer {...props} />
       </StyledFlexContainerBlock>
