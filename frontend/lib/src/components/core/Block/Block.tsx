@@ -383,5 +383,3 @@ export const VerticalBlock = (props: BlockPropsWithoutWidth): ReactElement => {
   // Deprecated. Use FlexBoxContainer instead.
   return <FlexBoxContainer {...props} />
 }
-
-export default VerticalBlock
